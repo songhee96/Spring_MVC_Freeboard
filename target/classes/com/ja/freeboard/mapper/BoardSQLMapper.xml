@@ -6,7 +6,7 @@
 <mapper namespace="com.ja.freeboard.mapper.BoardSQLMapper">
 	
 	<!--  id : 메소드 명 -->
-	<insert id="b_insert">
+	<insert id="insert">
 		INSERT INTO FB_Board
 		VALUES(FB_Board_seq.nextval,#{member_no},#{board_title},#{board_content},0,SYSDATE)
 	</insert>

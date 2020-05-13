@@ -5,10 +5,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
+	
+<script type="text/javascript"><!--웹브라우저 실행 (자바 스크립트)  -->
+	function frm_submit(){
+		//alert("안녕하세요");
+		
+		var frm = document.getElementById("frm");
+		
+		//유효성 검사
+		var idBox = document.getElementById("id");
+		
+		//ID 유효성...이메일 검사
+		
+		var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+		
+		if(!reg.test(idBox.value)){
+			alert("아이디가 이메일 형식에 맞지 않습니다.");
+			
+			idBox.value="";
+			idBox.focus();
+			return;
+		}
+		
+		reg =/^[A-Za-z0-9]{6,12}$/;
+		
+		var pwBox = document.getElementById("pw");
+		
+		if(!reg.test(pwBox.value)){
+			alert("비밀번호는 숫자,영문자로 6-12자리여야 합니다.");
+			return;
+		}
+		
+		frm.submit();
+		
+	}
+
+
+</script>	
+	
 </head>
 <body>
    <jsp:include page="../commons/global_nav.jsp"></jsp:include>
@@ -21,19 +61,19 @@
         <!-- 로고자리 -->
            <div class="col"><h1>회원가입</h1></div>
         </div>
-        <form action="./join_member_process.do" method="post">
+        <form id="frm" action="./join_member_process.do" method="post">
          <div class="row mt-5">
          <!-- id -->
                <div class=col-1>ID</div>
                <div class=col>
-               <input type="text" placeholder="아이디를 입력해주세요" name="member_id" class="form-control">
+               <input id="id"  type="text" placeholder="아이디를 입력해주세요" name="member_id" class="form-control">
                </div>
          </div>
           <div class="row mt-3">
            <!-- pw -->
                <div class=col-1>PW</div>
                <div class=col>
-               <input type="password" placeholder="비밀번호를 입력해주세요" name="member_pw" class="form-control">
+               <input id="pw" type="password" placeholder="비밀번호를 입력해주세요" name="member_pw" class="form-control">
                </div>
           </div>
             <div class="row mt-3">
@@ -75,7 +115,7 @@
                </div>
           </div> 
            <div class="row mt-3"><!-- submit -->
-             <div class ="col"><input type="submit" value="회원가입" class="btn btn-primary btn-lg btn-block"></div>
+             <div class ="col"><input onclick="frm_submit()" type="button" value="회원가입" class="btn btn-primary btn-lg btn-block"></div>
            </div>
            </form>
      </div>
