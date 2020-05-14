@@ -20,12 +20,12 @@ public class BoardController {
 
 	@Autowired
 	private BoardServiceImpl boardService;
-	
+	 
 	
 	@RequestMapping("/main_page.do")
-	public String mainPage(Model model) {
+	public String mainPage(Model model,String searchWord) {
 		
-		List<Map<String,Object>> list= boardService.getBoardList();
+		List<Map<String,Object>> list= boardService.getBoardList(searchWord);
 		
 		model.addAttribute("dataList",list);
 		

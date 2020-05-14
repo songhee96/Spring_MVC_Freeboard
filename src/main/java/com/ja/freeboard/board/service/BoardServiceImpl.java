@@ -23,11 +23,22 @@ public class BoardServiceImpl {
 		
 	}
 	
-	public List<Map<String,Object>> getBoardList() {
+	public List<Map<String,Object>> getBoardList(String searchWord) {
 		
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		
-		List<BoardVo> boardList = boardSQLMapper.selectAll();
+		List<BoardVo> boardList = null;
+		//검색값이 없다면 
+		if(searchWord == null) {
+			//전체 목록 페이지를 보여주고
+			boardList = boardSQLMapper.selectAll();
+			
+			
+		}else {
+			//아니면 검색된 페이지를 보여준다.
+			boardList = boardSQLMapper.selectBytitle(searchWord);
+			
+		}
 		
 		for(BoardVo boardVo : boardList) {
 			
@@ -39,7 +50,7 @@ public class BoardServiceImpl {
 			map.put("boardVo", boardVo);
 			
 			list.add(map);		
-		}
+		} 
 				
 		return list;		
 	}
@@ -68,5 +79,7 @@ public class BoardServiceImpl {
 	public void updateContent(BoardVo boardVo) {
 		boardSQLMapper.update(boardVo);
 	}
+	
+	
 	
 }

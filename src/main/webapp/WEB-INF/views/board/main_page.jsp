@@ -23,7 +23,18 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col">
-				<div class="row">
+			<form action="./main_page.do" method="get">
+				<div class ="row">
+					<div class ="col"></div>
+					<div class ="col">
+						<input type="text" name="searchWord" class="form-control" >
+					</div>
+					<div class ="col-2">
+						<input  type="submit" class="btn btn-primary btn-block" value="검색" >
+					</div>
+				</div>
+				</form>
+		<div class="row">
 					<!-- 테이블 -->
 					<div class="col">
 					
@@ -47,14 +58,8 @@
 										<td><fmt:formatDate value="${xxx.boardVo.board_writedate }" pattern="yy.MM.dd  hh:mm" /></td>
 										
 									</tr>
-
-
-								</c:forEach>
-
-
+							</c:forEach>
 							</tbody>
-
-
 						</table>
 					</div>
 				</div>
@@ -67,13 +72,11 @@
 								<li class="page-item active"><a class="page-link" href="#">1</a></li>
 								<li class="page-item"><a class="page-link" href="#">2</a></li>
 								<li class="page-item "><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
+								<li class="p age-item"><a class="page-link" href="#">4</a></li>
 								<li class="page-item"><a class="page-link" href="#">5</a></li>
 								<li class="page-item"><a class="page-link" href="#">다음</a></li>
 							</ul>
 						</nav>
-
-
 					</div>
 					<div class="col">
 						<a href="./write_content_page.do"
@@ -85,7 +88,6 @@
 			<div class="col-2"></div>
 		</div>
 	</div>
-
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
